@@ -43,6 +43,11 @@ spec:
             httpGet:
               path: /
               port: http
+          {{- if .Values.persistency.enabled }}
+          volumeMounts:
+          - name: kube-red-storage
+            mountPath: /data
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         {{ if .Values.faros.enabled }}
@@ -74,4 +79,10 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.persistency.enabled }}
+      volumes:
+      - name: kube-red-storage
+        persistentVolumeClaim:
+          claimName: {{ include "kube-red.fullname" . }}-node-red
       {{- end }}

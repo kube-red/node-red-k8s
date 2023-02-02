@@ -7,7 +7,7 @@ NodeRED K8s is a Node-RED container image that includes the Kube-RED nodes.
 ## Docker
 
 ```bash
-docker run -it -p 1880:1880 ghcr.io/kube-red/node-red-k8s:latest
+docker run -it -v ~/.kube/config:/kube/config --env KUBECONFIG=/kube/config -v $(pwd)/kube-red:/data -p 1880:1880 ghcr.io/kube-red/node-red-k8s:latest
 ```
 
 ## Kubernetes
@@ -24,7 +24,7 @@ helm upgrade -i node-red-k8s charts/kube-red \
 
 ### Kuberentes with [Faros](https://github.com/faroshq/faros-ingress)
 
-Create faros ingress resource
+Create faros connection resource
 
 ```bash
 # login to faros

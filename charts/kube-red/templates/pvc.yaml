@@ -1,0 +1,12 @@
+{{ if .Values.persistency.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "kube-red.fullname" . }}-node-red
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+{{- end }}
