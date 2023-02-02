@@ -15,7 +15,7 @@
         "debug_brk": "node --inspect=0.0.0.0:9229 --inspect-brk $NODE_OPTIONS node_modules/node-red/red.js $FLOWS"
     },
     "dependencies": {
-        "@kube-red/node-red-kube-red": "^0.0.4-dev",
+        "@kube-red/node-red-kube-red": "^0.0.6-dev",
         "node-red": "3.0.2"
     },
     "engines": {
